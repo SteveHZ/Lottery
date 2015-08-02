@@ -1,0 +1,19 @@
+[% META title = 'Lottery' -%]
+[%# USE Dumper; Dumper.dump(c.stash.numbers) %]
+
+<h2>Lottery - Check my Numbers</h2>
+
+<p><a href="[% c.uri_for(c.controller.action_for('home')) %]">Go Back Home</a></p>
+
+<table>
+	<th>Numbers</th>
+	<th>Appearances</th>
+	[% FOREACH row IN data -%]
+		<tr>
+			<td>[% row.numbers %]</td>
+			<td>[% row.appearances %]</td>
+		</tr>
+	[% END %]
+</table>
+
+<p><a href="[% c.uri_for(c.controller.action_for('home')) %]">Go Back Home</a></p>

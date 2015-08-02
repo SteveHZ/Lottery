@@ -1,0 +1,21 @@
+[% META title = 'Lottery' -%]
+ 
+<h2> Lottery - [% caller %]</h2>
+
+<p><a href="[% c.uri_for(c.controller.action_for('home')) %]">Go Back Home</a></p>
+
+<table>
+	<tr>
+		<th>Number</th>
+		<th>Appearances</th>
+	</tr>
+
+	[% FOREACH row IN data -%]
+		<tr>
+			<td>[% row.numbers %]</td>
+			<td>[% row.appearances %]</td>
+		</tr>
+	[% END -%]
+</table>
+
+<p><a href="[% c.uri_for(c.controller.action_for('home')) %]">Go Back Home</a></p>

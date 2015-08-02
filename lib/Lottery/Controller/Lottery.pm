@@ -28,20 +28,13 @@ sub index :Path Args(0) {
 	$c->response->redirect ($c->uri_for ($self->action_for ('home')));
 }
 
-sub base :Chained('/') PathPart('Lottery') CaptureArgs(0) {
-#	my ($self, $c) = @_;
-
-#	$c->stash (numbers => [$c->model('DB::Number')->all ]);
-#	$c->load_status_msgs;
-}
-
-sub home :Chained('base') PathPart('home') Args(0) {
+sub home :Path('home') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash ( template => 'Home.tt2');
 }
 
-sub showAll :Chained('base') PathPart('showAll') Args(0) {
+sub showAll :Path('showAll') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash ( template => 'ShowAll.tt2',
@@ -51,7 +44,7 @@ sub showAll :Chained('base') PathPart('showAll') Args(0) {
 	);
 }
 
-sub singles :Chained('base') PathPart('singles') Args(0) {
+sub singles :Path('singles') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash (	template => 'Combinations.tt2',
@@ -62,7 +55,7 @@ sub singles :Chained('base') PathPart('singles') Args(0) {
 	);
 }
 
-sub doubles :Chained('base') PathPart('doubles') Args(0) {
+sub doubles :Path('doubles') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash (	template => 'Combinations.tt2',
@@ -73,7 +66,7 @@ sub doubles :Chained('base') PathPart('doubles') Args(0) {
 	);
 }
 
-sub triples :Chained('base') PathPart('triples') Args(0) {
+sub triples :Path('triples') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash ( template => 'Combinations.tt2',
@@ -85,7 +78,7 @@ sub triples :Chained('base') PathPart('triples') Args(0) {
 	);
 }
 
-sub quads :Chained('base') PathPart('quads') Args(0) {
+sub quads :Path('quads') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash ( template => 'Combinations.tt2',
@@ -96,7 +89,7 @@ sub quads :Chained('base') PathPart('quads') Args(0) {
 				);
 }
 
-sub check :Chained('base') PathPart('check') Args(0) {
+sub check :Path('check') Args(0) {
 	my ($self, $c) = @_;
 
 	$c->stash (	template => 'Combinations.tt2',

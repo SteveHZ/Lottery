@@ -13,17 +13,17 @@ sub check_my_numbers {
 	my @my_numbers = (qw /2 3 10 11 23 39/);
 	my $array = [];
 
-	my ($coderef, $draw, $idx, $count, $str, $buf, $i);
-
-	$coderef = sub {
+	my ($draw, $idx, $str, $i);
+	
+	my $coderef = sub {
 		my $objref = shift; # calling ComboGen object
-		$count = 0;
-		$str = "";
+		my @temp = ();
+		my $count = 0;
 
 		DRAW:
   		foreach $draw (@lottery) {
-			my @numbers = split(/ /,$draw->numbers);
-			shift(@numbers); # remove initial space
+			my @numbers = split (/ /, $draw->numbers);
+			shift (@numbers); # remove initial space
 			$idx = 0;
 
 			foreach (@numbers) {
@@ -42,18 +42,17 @@ sub check_my_numbers {
 			}
 		}
 
-		for ($i = 0;$i < $objref->selections;$i ++) {
-			$buf = sprintf ("%2d",$my_numbers [ $objref->index ($i) ] ); # build str for view
-			$str .= $buf. " ";
-		}
-		
-		push ($array, { numbers => $str,
-						appearances => $count,
+		push (@temp, $my_numbers [ $objref->index ($_) ] ) for (0...$objref->selections - 1);
+		$str = join (' ', map { sprintf "%2d", $_ } @temp); 		
+
+		push (@$array, {
+			numbers => $str,
+			appearances => $count,
 		});
 
 	}; # end of anonymous sub
 
-	for ($i = 1; $i <= 6; $i++) {
+	for $i (1...6) {
 		my $gen = ComboGen->new ($i,6);
 		$gen->onIteration ($coderef);
 		$gen->run ();

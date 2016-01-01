@@ -12,6 +12,7 @@ Lottery::Controller::Lottery - Catalyst Controller
 
 Catalyst Controller.
 Lottery.pm 07/06/15
+v1.01 08/12/15 (using URI plugin)
 
 =head1 METHODS
 
@@ -24,8 +25,9 @@ Lottery.pm 07/06/15
 
 sub index :Path Args(0) {
     my ( $self, $c ) = @_;
-
-	$c->response->redirect ($c->uri_for ($self->action_for ('home')));
+	
+	$c->response->redirect ($c->uri("Lottery.home"));
+#	$c->response->redirect ($c->uri_for ($self->action_for ('home')));
 }
 
 sub home :Path('home') Args(0) {

@@ -2,7 +2,7 @@
  
 <h2> Lottery - [% caller %]</h2>
 
-<p><a href="[% c.uri_for(c.controller.action_for('home')) %]">Go Back Home</a></p>
+<p><a href="[% c.uri ("Lottery.home") %]">Go Back Home</a></p>
 
 <table>
 	<tr>
@@ -18,4 +18,7 @@
 	[% END -%]
 </table>
 
+<p><a href="[% c.uri ("Lottery.home") %]">Go Back Home</a></p>
+<!--
 <p><a href="[% c.uri_for(c.controller.action_for('home')) %]">Go Back Home</a></p>
+-->

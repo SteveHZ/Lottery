@@ -3,7 +3,7 @@
 	<head>
 		<title>[% template.title or "Wrapper Test" %]</title>
 		<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/css/mine.css') %]" />
-		<script src="[% c.uri_for('/static/js/StripeTables.js') %]"></script>
+   		<script src="[% c.uri_for('/static/js/StripeTables.js') %]"></script>
 	</head>
 
 	<body>

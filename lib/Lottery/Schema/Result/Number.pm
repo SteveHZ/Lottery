@@ -105,7 +105,7 @@ Strip spaces from the numbers string and replace with dashes
 =cut
 
 sub num_str {
-	my($self) = @_;
+	my $self = shift;
 	
 	my $temp = $self->numbers;
 	$temp =~ s/ / - /g;

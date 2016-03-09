@@ -1,7 +1,7 @@
 
 [% META title = 'Lottery - Home' -%]
 
-<h2>Lottery</h2>
+<h2>Perl Lottery</h2>
 
 <div class = "home">
 	<a class = "noline" href="showAll">
